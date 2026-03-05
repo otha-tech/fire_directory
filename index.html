@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Commerce Drive - Office Directory</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #fff;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #222;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4vh 6vw 3vh;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    pointer-events: none;
+  }
+
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .building-name {
+    font-size: 3.2vh;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 1.5vh;
+  }
+
+  .floor-header {
+    font-size: 5.5vh;
+    font-weight: bold;
+    color: #1a3a5c;
+    margin-bottom: 3vh;
+    text-align: center;
+  }
+
+  .directory-table {
+    width: 70vw;
+    max-width: 900px;
+    border-collapse: collapse;
+    flex-grow: 1;
+  }
+
+  .directory-table tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .directory-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .directory-table td {
+    padding: 2.2vh 2vw;
+    font-size: 3.8vh;
+    vertical-align: middle;
+  }
+
+  .suite-num {
+    width: 30%;
+    font-weight: bold;
+    color: #1a3a5c;
+    white-space: nowrap;
+  }
+
+  .tenant-name {
+    width: 70%;
+    color: #333;
+  }
+
+  .footer {
+    margin-top: auto;
+    padding-top: 2vh;
+    text-align: center;
+    font-size: 1.8vh;
+    color: #888;
+    line-height: 1.6;
+    max-width: 80vw;
+  }
+</style>
+</head>
+<body>
+
+<script>
+// ── Tenant Directory Data ──────────────────────────────────────
+// Edit this array to update the directory. Each object is one floor slide.
+const floors = [
+  {
+    title: "First Floor",
+    tenants: [
+      { suite: "Suite 100", name: "Saint Francis At Home" },
+      { suite: "Suite 101", name: "Gordon Food Services" },
+      { suite: "Suite 106", name: "Turnkey Risk Solutions" },
+      { suite: "Suite 109", name: "Optimize Manpower Solutions" },
+      { suite: "Suite 110", name: "Power Industry Experts" },
+    ]
+  },
+  {
+    title: "Second Floor",
+    tenants: [
+      { suite: "Suite 200", name: "Chesapeake Utilities Corporation" },
+      { suite: "Suite 201", name: "Asplundh Engineering Services" },
+    ]
+  },
+  {
+    title: "Third Floor",
+    tenants: [
+      { suite: "Suite 300", name: "LifeStance Health" },
+      { suite: "Suite 301", name: "Mesa Associates" },
+      { suite: "Suite 302", name: "VITAS Healthcare" },
+      { suite: "Suite 303", name: "RATH Inc" },
+      { suite: "Suite 305", name: "Rodney Trust Company" },
+      { suite: "Suite 306", name: "ITRadiant Solutions" },
+    ]
+  }
+];
+
+const SLIDE_INTERVAL = 5000; // ms between slides
+const BUILDING = "100 Commerce Drive";
+const FOOTER = "This property is owned, managed, and maintained by Old Town Hall Associates.\nFor maintenance issues please call 302.998.0100 or write to OTHA-Tenants@dplaw.com.";
+
+// ── Build Slides ───────────────────────────────────────────────
+floors.forEach((floor, i) => {
+  const slide = document.createElement("div");
+  slide.className = "slide" + (i === 0 ? " active" : "");
+
+  const bldg = document.createElement("div");
+  bldg.className = "building-name";
+  bldg.textContent = BUILDING;
+  slide.appendChild(bldg);
+
+  const header = document.createElement("div");
+  header.className = "floor-header";
+  header.textContent = floor.title;
+  slide.appendChild(header);
+
+  const table = document.createElement("table");
+  table.className = "directory-table";
+  floor.tenants.forEach(t => {
+    const tr = document.createElement("tr");
+    const tdSuite = document.createElement("td");
+    tdSuite.className = "suite-num";
+    tdSuite.textContent = t.suite;
+    const tdName = document.createElement("td");
+    tdName.className = "tenant-name";
+    tdName.textContent = t.name;
+    tr.appendChild(tdSuite);
+    tr.appendChild(tdName);
+    table.appendChild(tr);
+  });
+  slide.appendChild(table);
+
+  const footer = document.createElement("div");
+  footer.className = "footer";
+  footer.innerHTML = FOOTER.replace("\n", "<br>");
+  slide.appendChild(footer);
+
+  document.body.appendChild(slide);
+});
+
+// ── Slide Cycling ──────────────────────────────────────────────
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+
+setInterval(() => {
+  slides[current].classList.remove("active");
+  current = (current + 1) % slides.length;
+  slides[current].classList.add("active");
+}, SLIDE_INTERVAL);
+</script>
+
+</body>
+</html>
