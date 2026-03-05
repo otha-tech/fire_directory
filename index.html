@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>100 Commerce Drive - Office Directory</title>
+<title>Office Directory</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -34,14 +34,6 @@
   .slide.active {
     opacity: 1;
     pointer-events: auto;
-  }
-
-  .building-name {
-    font-size: 3.2vh;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #666;
-    margin-bottom: 1.5vh;
   }
 
   .floor-header {
@@ -133,18 +125,12 @@ const floors = [
 ];
 
 const SLIDE_INTERVAL = 5000; // ms between slides
-const BUILDING = "100 Commerce Drive";
 const FOOTER = "This property is owned, managed, and maintained by Old Town Hall Associates.\nFor maintenance issues please call 302.998.0100 or write to OTHA-Tenants@dplaw.com.";
 
 // ── Build Slides ───────────────────────────────────────────────
 floors.forEach((floor, i) => {
   const slide = document.createElement("div");
   slide.className = "slide" + (i === 0 ? " active" : "");
-
-  const bldg = document.createElement("div");
-  bldg.className = "building-name";
-  bldg.textContent = BUILDING;
-  slide.appendChild(bldg);
 
   const header = document.createElement("div");
   header.className = "floor-header";
