@@ -2,11 +2,35 @@
 
 Display URL: `https://otha-tech.github.io/fire_directory/`
 
-## 1. Initial Fire TV Stick Setup
+## Overview: Setup at Office, Deploy at Building
 
-1. Plug the Fire TV Stick into the TV's HDMI port and connect power
-2. Follow on-screen setup: select language, connect to WiFi, sign into Amazon account
-3. Complete any firmware updates when prompted
+You'll do all the configuration at your office using your office WiFi, then move the stick to 100 Commerce Drive and switch it to that building's WiFi. The Fire Stick remembers all your settings — you just need to change the network on-site.
+
+## 1. Initial Fire TV Stick Setup (at your office)
+
+### Hardware
+
+1. Plug the Fire TV Stick into any TV or monitor with HDMI (your office TV is fine for setup)
+2. Connect the USB power cable to the included power adapter — **use the included adapter**, not the TV's USB port (not enough power)
+3. Turn the TV to the correct HDMI input
+
+### First boot
+
+4. The Fire Stick will power on automatically and show the logo
+5. It will prompt you to **pair the remote** — hold the Home button until it connects
+6. Select **language**
+
+### Connect to WiFi
+
+7. It will scan for networks. Select your **office WiFi network**
+8. Enter the WiFi password using the on-screen keyboard (use the remote's directional pad to navigate)
+9. Wait for it to connect and verify internet access
+
+### Amazon account
+
+10. Sign into your **Amazon account** (or create one) — this is required to access the Appstore
+11. You can skip any "register household" or "choose your apps" prompts
+12. Let it complete any **firmware updates** — it may restart once or twice, just wait
 
 ## 2. Install Fully Kiosk Browser (Recommended)
 
@@ -80,6 +104,24 @@ If Fully Kiosk isn't available, the built-in Silk browser works but shows a URL 
 4. Tap the fullscreen icon if available
 
 Note: Silk doesn't support auto-launch on boot or kiosk lockdown.
+
+## 5. Deploy to 100 Commerce Drive
+
+Once everything is configured and tested at your office, move the stick to the building.
+
+### At the building
+
+1. Plug the Fire Stick into the lobby TV's HDMI port and connect power
+2. It will boot up and try to connect to your office WiFi — **it will fail**, that's expected
+3. If Fully Kiosk launches, press the **Home button** on the remote to get to the Fire TV home screen
+4. Go to **Settings → Network**
+5. Select the **building's WiFi network** and enter the password
+6. Wait for it to connect — once online, go back to Fully Kiosk (it should be in your recent apps) or it will auto-launch on next reboot
+7. Verify the directory loads and cycles through the 3 floor pages
+
+### Hide the remote
+
+8. Once it's running, stash the remote somewhere accessible but out of sight (you'll need it if WiFi changes or the stick needs attention)
 
 ## Updating the Directory
 
