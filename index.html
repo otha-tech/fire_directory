@@ -154,7 +154,7 @@ floors.forEach((floor, i) => {
 
   const footer = document.createElement("div");
   footer.className = "footer";
-  footer.innerHTML = FOOTER.replace("\n", "<br>");
+  footer.innerHTML = FOOTER.replaceAll("\n", "<br>");
   slide.appendChild(footer);
 
   document.body.appendChild(slide);
